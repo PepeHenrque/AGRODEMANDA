@@ -1,32 +1,33 @@
-# AGRODEMANDA - Sistema Municipal de Gestão das Demandas Rurais
+# AGRODEMANDA - Sistema de Gestão das Demandas Rurais
 
-> "A demanda da comunidade na palma da mão."
+> Projeto acadêmico para o Desafio de Inovação Digital (Santa Cruz do Capibaribe - PE) e disciplina de Spring Boot.
 
-Projeto desenvolvido para atender conjuntamente ao **Desafio de Inovação Digital 2026 (Prefeitura Municipal de Santa Cruz do Capibaribe - PE / Secretaria de Agricultura)** e ao projeto prático de **Spring Boot**.
+## Organização do Grupo e Branches
 
-## Equipe
-- Pedro Henrique (Bloco 2 - Back-end e Persistência)
-- Micael
-- Letícia
-- Lívia
+Para manter o desenvolvimento organizado e sem erros de código, **cada integrante deve trabalhar exclusivamente na sua branch**:
 
-## Divisão dos Blocos
-- **Bloco 1 (branch `bloco-1-frontend`)**: Telas em Bootstrap e Thymeleaf (Portal Mobile do Agricultor e Painel da Secretaria).
-- **Bloco 2 (branch `bloco-2-backend`)**: Estrutura Spring Boot, Entidades JPA, H2 Database e Repositórios.
-- **Bloco 3 (branch `bloco-3-logica`)**: Controllers, Services, geração de protocolo e regras de transição de status.
-- **Bloco 4 (branch `bloco-4-docs`)**: Documento técnico do Spring Boot, relatório de impacto e slides da apresentação.
+- `bloco-1-frontend`: Telas da aplicação (Portal do Agricultor e Painel da Secretaria).
+- `bloco-2-backend`: Entidades, banco de dados H2 e repositórios (Concluído).
+- `bloco-3-logica`: Controllers, regras de negócio e geração de protocolo.
+- `bloco-4-docs`: Documentos técnicos, relatório do desafio e slides.
 
-## Tecnologias
-- Java 21
-- Spring Boot 3
-- Spring Data JPA
-- Thymeleaf
-- H2 Database (Console em `/h2-console`)
-- Bootstrap 5
+### Por que trabalhar em branch própria é importante?
+1. **Evita conflitos de código:** Ninguém corre o risco de sobrescrever ou apagar o trabalho do colega.
+2. **Comprovação de participação:** Os professores conseguem ver claramente no GitHub o histórico de commits de cada integrante.
+3. **Segurança:** A branch principal (`main`) permanece sempre limpa e funcional.
 
-## Como Executar
-1. Abra o projeto na sua IDE de preferência (IntelliJ, VS Code, Eclipse).
-2. Execute a classe principal `AgrodemandaApplication.java`.
-3. Acesse no navegador:
-   - Aplicação: `http://localhost:8080`
-   - Console do H2: `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:agrodemandadb`, Usuário: `sa`, Senha: em branco).
+### Como começar a trabalhar na sua branch:
+Após clonar o repositório, basta abrir o terminal na pasta do projeto e executar o comando da sua branch:
+
+```bash
+git checkout nome-da-sua-branch
+```
+
+Depois de fazer suas alterações:
+```bash
+git add .
+git commit -m "descricao simples do que foi feito"
+git push origin nome-da-sua-branch
+```
+
+*(O README final com a documentação completa da aplicação será gerado na entrega do projeto).*
