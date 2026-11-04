@@ -6,7 +6,7 @@
 
 Todas as branches já estão criadas no repositório. Cada integrante deve trabalhar na sua branch específica, facilitando a apresentação individual para os professores:
 
-- **Lívia Silva** -> `bloco-1-frontend`: Telas da aplicação em Bootstrap e Thymeleaf (Portal do Agricultor e Painel da Secretaria).
+- **Líbia Silva** -> `bloco-1-frontend`: Telas da aplicação em Bootstrap e Thymeleaf (Portal do Agricultor e Painel da Secretaria).
 - **Pedro Henrique** -> `bloco-2-backend`: Entidades JPA, banco de dados H2 e repositórios (Concluído).
 - **Letícia Albuquerque** -> `bloco-3-logica`: Controllers, regras de negócio e geração de protocolo.
 - **Miquéias Almeida** -> `bloco-4-docs`: Documento técnico do Spring Boot, relatório do desafio e slides da apresentação.
@@ -30,7 +30,7 @@ cd AGRODEMANDA
 ```
 
 ### 2. Entrar na sua branch específica:
-- Lívia: `git checkout bloco-1-frontend`
+- Líbia: `git checkout bloco-1-frontend`
 - Letícia: `git checkout bloco-3-logica`
 - Miquéias: `git checkout bloco-4-docs`
 - Pedro: `git checkout bloco-2-backend`
