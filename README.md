@@ -2,28 +2,30 @@
 
 > Projeto acadêmico para o Desafio de Inovação Digital (Santa Cruz do Capibaribe - PE) e disciplina de Spring Boot.
 
-## Organização do Grupo e Branches
+## Integrantes e Divisão das Tarefas
 
-Para manter o desenvolvimento organizado e sem erros de código, **cada integrante deve trabalhar exclusivamente na sua branch**:
+- **Lívia Silva** -> `bloco-1-frontend`: Telas da aplicação em Bootstrap e Thymeleaf (Portal do Agricultor e Painel da Secretaria).
+- **Pedro Henrique** -> `bloco-2-backend`: Entidades JPA, banco de dados H2 e repositórios (Concluído).
+- **Letícia Albuquerque** -> `bloco-3-logica`: Controllers, regras de negócio e geração de protocolo.
+- **Miquéias Almeida** -> `bloco-4-docs`: Documento técnico do Spring Boot, relatório do desafio e slides da apresentação.
 
-- `bloco-1-frontend`: Telas da aplicação (Portal do Agricultor e Painel da Secretaria).
-- `bloco-2-backend`: Entidades, banco de dados H2 e repositórios (Concluído).
-- `bloco-3-logica`: Controllers, regras de negócio e geração de protocolo.
-- `bloco-4-docs`: Documentos técnicos, relatório do desafio e slides.
+## Como Trabalhar na sua Branch
 
-### Por que trabalhar em branch própria é importante?
-1. **Evita conflitos de código:** Ninguém corre o risco de sobrescrever ou apagar o trabalho do colega.
-2. **Comprovação de participação:** Os professores conseguem ver claramente no GitHub o histórico de commits de cada integrante.
-3. **Segurança:** A branch principal (`main`) permanece sempre limpa e funcional.
+Cada integrante deve trabalhar exclusivamente na sua própria branch para evitar conflitos de código e registrar a participação individual no GitHub.
 
-### Como começar a trabalhar na sua branch:
-Após clonar o repositório, basta abrir o terminal na pasta do projeto e executar o comando da sua branch:
-
+### 1. Clonar o repositório (apenas na primeira vez):
 ```bash
-git checkout nome-da-sua-branch
+git clone https://github.com/PepeHenrque/AGRODEMANDA.git
+cd AGRODEMANDA
 ```
 
-Depois de fazer suas alterações:
+### 2. Entrar na sua branch específica:
+- Lívia: `git checkout bloco-1-frontend`
+- Letícia: `git checkout bloco-3-logica`
+- Miquéias: `git checkout bloco-4-docs`
+- Pedro: `git checkout bloco-2-backend`
+
+### 3. Salvar e enviar suas alterações:
 ```bash
 git add .
 git commit -m "descricao simples do que foi feito"
