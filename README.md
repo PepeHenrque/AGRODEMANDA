@@ -6,7 +6,7 @@
 
 Todas as branches já estão criadas no repositório. Cada integrante deve trabalhar na sua branch específica, facilitando a apresentação individual para os professores:
 
-- **Líbia Silva** -> `bloco-1-frontend`: Telas da aplicação em Bootstrap e Thymeleaf (Portal do Agricultor e Painel da Secretaria).
+- **Líbia Silveira** -> `bloco-1-frontend`: Telas da aplicação em Bootstrap e Thymeleaf (Portal do Agricultor e Painel da Secretaria).
 - **Pedro Henrique** -> `bloco-2-backend`: Entidades JPA, banco de dados H2 e repositórios (Concluído).
 - **Letícia Albuquerque** -> `bloco-3-logica`: Controllers, regras de negócio e geração de protocolo.
 - **Miquéias Almeida** -> `bloco-4-docs`: Documento técnico do Spring Boot, relatório do desafio e slides da apresentação.
