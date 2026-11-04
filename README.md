@@ -4,20 +4,19 @@
 
 ## Integrantes e Divisão das Tarefas
 
-Todas as branches já estão criadas no repositório. Cada integrante deve trabalhar na sua branch específica, facilitando a apresentação individual para os professores:
+Todas as branches já estão criadas e separadas no repositório. Cada integrante deve trabalhar na sua branch específica:
 
 - **Líbia Silveira** -> `bloco-1-frontend`: Telas da aplicação em Bootstrap e Thymeleaf (Portal do Agricultor e Painel da Secretaria).
 - **Pedro Henrique** -> `bloco-2-backend`: Entidades JPA, banco de dados H2 e repositórios (Concluído).
 - **Letícia Albuquerque** -> `bloco-3-logica`: Controllers, regras de negócio e geração de protocolo.
 - **Miquéias Almeida** -> `bloco-4-docs`: Documento técnico do Spring Boot, relatório do desafio e slides da apresentação.
 
-## Diretriz do Projeto: Mínimo Funcional
+## Diretrizes e Alinhamento do Projeto
 
-O objetivo principal é entregar uma aplicação **minimamente funcional** que cumpra os requisitos solicitados por ambos os professores (Rafael e Maurício) com o menor retrabalho possível:
-- **Professor Maurício:** Aplicação funcional desenvolvida em Spring Boot com persistência de dados.
-- **Professor Rafael:** Plataforma digital que atenda ao desafio de gestão de demandas rurais (registro da demanda, acompanhamento e painel da secretaria).
-
-Cada integrante apresentará a sua parte correspondente ao seu bloco e branch.
+1. **Mínimo Funcional:** O objetivo é entregar uma aplicação funcional com o mínimo necessário para atender a ambos os professores (Rafael e Maurício), sem sobrecarregar a equipe com outras disciplinas em andamento.
+2. **Liberdade de Ferramentas:** Fica a critério de cada integrante o uso de IA ou ferramentas auxiliares para desenvolvimento, desde que cada um compreenda e saiba explicar detalhadamente o código ou material produzido.
+3. **Complexidade Opcional:** Quem quiser elaborar mais sua parte tem total liberdade, desde que não crie conflitos diretos com os outros blocos. Caso surja algum conflito na integração, alinhamos e resolvemos juntos no final.
+4. **Apresentação Individual:** Cada integrante apresentará a sua respectiva branch/bloco, garantindo uma divisão justa e clara da participação de todos perante os professores.
 
 ## Como Trabalhar na sua Branch
 
