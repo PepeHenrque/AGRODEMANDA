@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Agricultor</title>
+    <link rel="stylesheet" th:href="@{/css/style.css(v=2)}">
+</head>
+<body>
+    <div th:replace="~{fragments :: navbar('', 'portal')}"></div>
+
+    <header class="hero">
+        <div class="hero-terra"></div>
+        <div class="hero-canto"></div>
+        <svg class="hero-folhas" viewBox="0 0 1200 620" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+            <defs>
+                <g id="folha">
+                    <path d="M0 0C95 90 105 250 0 400C-105 250 -95 90 0 0Z"/>
+                    <path class="veia" d="M0 8V400M0 90L55 55M0 90L-55 55M0 160L70 115M0 160L-70 115M0 230L72 180M0 230L-72 180M0 300L55 255M0 300L-55 255"/>
+                </g>
+            </defs>
+<use href="#folha" class="folha-escura" transform="translate(1010 -40) rotate(25) scale(1.9)"/>
+<use href="#folha" class="folha-verde" transform="translate(840 -30) rotate(-12) scale(1.5)"/>
+<use href="#folha" class="folha-escura" transform="translate(1120 230) rotate(-25) scale(1.7)"/>
+<use href="#folha" class="folha-clara" transform="translate(950 170) rotate(12) scale(1.8)"/>
+<use href="#folha" class="folha-bege" transform="translate(760 300) rotate(-8) scale(1.5)"/>
+<use href="#folha" class="folha-verde" transform="translate(1060 420) rotate(35) scale(1.7)"/>
+<use href="#folha" class="folha-marrom" transform="translate(870 330) rotate(55) scale(2.3)"/>
+<use href="#folha" class="folha-clara" transform="translate(470 -20) rotate(-70) scale(0.9)"/>
+        </svg>
+        <div class="container hero-conteudo">
+            <h1 class="hero-titulo">Do campo direto para a Secretaria</h1>
+            <p class="hero-texto">Registre sua necessidade, receba um protocolo e acompanhe o atendimento de forma simples e rápida.</p>
+            <a href="#formDemanda" class="btn btn-primario">Registrar demanda</a>
+        </div>
+    </header>
+
+    <section class="faixa-escura">
+        <div class="container">
+            <div class="features">
+                <div class="feature-item">
+                    <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><circle cx="24" cy="24" r="11"/><path d="M24 4v8M24 36v8M4 24h8M36 24h8"/></svg>
+                    <h3>Registre</h3><p>Informe sua comunidade e o que você precisa.</p>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M16 16h16M16 24h16M16 32h10"/></svg>
+                    <h3>Protocolo</h3><p>Receba um código único para sua solicitação.</p>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 48 48"><circle cx="21" cy="21" r="13"/><path d="M31 31l12 12"/></svg>
+                    <h3>Acompanhe</h3><p>Consulte o status quando quiser.</p>
+                </div>
+                <div class="feature-item">
+                    <svg viewBox="0 0 48 48"><path d="M24 42C8 34 8 14 24 6c16 8 16 28 0 36Z"/><path d="M24 42V16"/></svg>
+                    <h3>Atendimento</h3><p>A Secretaria analisa e conclui sua demanda.</p>
+                </div>
+            </div>
+
+            <div th:if="${mensagemSucesso}" class="alerta alerta-sucesso" th:text="${mensagemSucesso}"></div>
+
+            <div class="card">
+                <h2 class="card-titulo">Consultar Protocolo</h2>
+                <form th:action="@{/}" method="get" class="form-busca">
+                    <input type="text" id="inputProtocolo" name="protocoloConsulta" placeholder="Digite seu protocolo" required minlength="8" maxlength="8" autocomplete="off">
+                    <button type="submit" class="btn btn-primario">Consultar</button>
+                </form>
+                <div th:if="${resultadoConsulta != null}">
+                    <div th:if="${#lists.isEmpty(resultadoConsulta)}" class="alerta alerta-aviso">Protocolo não encontrado.</div>
+                    <div th:unless="${#lists.isEmpty(resultadoConsulta)}">
+                        <div th:each="d : ${resultadoConsulta}" class="resultado-consulta">
+                            <div>Status:
+                                <span class="badge" th:classappend="${d.status.name() == 'PENDENTE'} ? 'badge-pendente' : 'badge-concluida'" th:text="${d.status}"></span></div>
+                            <div>Necessidade: <strong th:text="${d.tipoNecessidade}"></strong></div>
+                            <div>Comunidade: <span th:text="${d.comunidade}"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-titulo">Nova Demanda</h2>
+                <form id="formDemanda" th:action="@{/demandas}" method="post">
+                    <div class="form-grid">
+                        <div class="form-grupo"><label for="inputNome">Nome completo</label>
+                            <input type="text" id="inputNome" name="nome" required minlength="3" maxlength="80" autocomplete="name" pattern="[A-Za-zÀ-ÿ' \-]{3,80}" title="Use apenas letras (mínimo 3)" placeholder="Seu nome"></div>
+                        <div class="form-grupo"><label for="inputTelefone">Telefone / WhatsApp</label>
+                            <input type="text" id="inputTelefone" name="telefone" required inputmode="numeric" maxlength="15" autocomplete="tel" pattern="\(\d{2}\) \d{4,5}-\d{4}" title="Formato: (00) 00000-0000" placeholder="(00) 00000-0000"></div>
+                        <div class="form-grupo"><label for="selectComunidade">Comunidade</label>
+                            <select id="selectComunidade" name="comunidade" required>
+                                <option value="">Selecione...</option>
+                                <option value="Magana">Magana</option>
+                                <option value="Barra da Cruz">Barra da Cruz</option>
+                                <option value="Centro">Centro</option>
+                                <option value="Zona Rural">Zona Rural</option>
+                            </select></div>
+                        <div class="form-grupo"><label for="inputNecessidade">Tipo de necessidade</label>
+                            <input type="text" id="inputNecessidade" name="tipoNecessidade" required minlength="3" maxlength="60" placeholder="Ex.: Adubo, assistência técnica"></div>
+                    </div>
+                    <div class="form-grupo"><label for="textareaDescricao">Descrição</label>
+                        <textarea id="textareaDescricao" name="descricao" rows="4" required minlength="10" maxlength="500" placeholder="Descreva sua necessidade (mínimo 10 caracteres)"></textarea>
+                        <small id="contadorDescricao" class="contador">0/500</small></div>
+                    <button type="submit" class="btn btn-primario btn-block">Enviar demanda</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">AgroDemanda · Secretaria de Agricultura</footer>
+    <script th:src="@{/js/script.js(v=2)}"></script>
+</body>
+</html>

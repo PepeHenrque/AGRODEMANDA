@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="navbar(classe, pagina)" class="navbar" th:classappend="${classe}">
+    <span class="navbar-logo">🌿 AgroDemanda</span>
+    <div class="navbar-links">
+        <a th:if="${pagina != 'portal'}" href="/">Portal</a>
+        <a th:if="${pagina != 'painel'}" href="/painel">Painel</a>
+    </div>
+</nav>
+</body>
+</html>
