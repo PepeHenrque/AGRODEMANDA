@@ -2,21 +2,21 @@ package com.agrodemanda.controller;
 
 import com.agrodemanda.model.Demanda;
 import com.agrodemanda.service.DemandaService;
-import org.sgpringframework.beans.factory.annotation.Autowired;
-import org.sgpringframework.stereotype.controller;
-import org.sgpringframework.ui.Model;
-import org.sgpringframework.web.bind.annotation;
-import org.sgpringframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@controller
-private class DemandaController {
+@Controller
+public class DemandaController {
 
     @Autowired
     private DemandaService service;
 
     @GetMapping("/")
     public String portalAgricultor(Model model){
-        model.addAttribte("demanda," new Demanda());
+        model.addAttribute("demanda," new Demanda());
         return "portal-agricultor";
     }
 
@@ -31,7 +31,7 @@ private class DemandaController {
     @GetMapping("/demanda/consultar")
     public String consultarProtocolo(@RequestParam("protocolo") String protocolo, Model model){
         Demanda resultado = service.buscarPorProtocolo(protocolo.trim());
-        model.ModelAttribute("demanda", new Demanda());
+        model.Attribute("demanda", new Demanda());
         model.addAttribute("resultadoConsulta", resultado);
 
         if (resultado == null) {
