@@ -2,13 +2,13 @@ package com.agrodemanda.service;
 
 import com.agrodemanda.model.Demanda;
 import com.agrodemanda.repository.DemandaRepository;
-import org.sgpringframework.beans.factory.annotation.Autowired;
-import org.sgpringframework.stereotype.service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@service
+@Service
 public class DemandaService{
 
     @Autowired
@@ -17,7 +17,7 @@ public class DemandaService{
     public Demanda salvarNovaDemanda(Demanda demanda){
         demanda.setDataCriacao(LocalDateTime.now());
 
-        if (demanda.getstatus() == null || demanda.getStatus().isEmpty()){
+        if (demanda.getStatus() == null || demanda.getStatus().isBlank()){
             demanda.setStatus("Pendente");
         }
         Demanda salva = repository.save(demanda);
@@ -52,7 +52,7 @@ public class DemandaService{
     }
 
     public long contarConcluidas(){
-        return repository.countByStatus("concluído");
+        return repository.countByStatus("Concluído");
     }
 
 }
