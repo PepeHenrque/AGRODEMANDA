@@ -41,11 +41,17 @@
                             <td><span class="badge badge-comunidade" th:text="${demanda.comunidade}"></span></td>
                             <td th:text="${demanda.tipoNecessidade}"></td>
                             <td><span class="badge" th:classappend="${demanda.status.name() == 'PENDENTE'} ? 'badge-pendente' : 'badge-concluida'" th:text="${demanda.status.descricao != null ? demanda.status.descricao : demanda.status}"></span></td>
-                            <td class="text-center">
-                                <form th:if="${demanda.status.name() == 'PENDENTE'}" th:action="@{/demandas/{id}/concluir(id=${demanda.id})}" method="post">
-                                    <button type="submit" class="btn btn-primario btn-sm">Concluir</button>
+                            <td class="text-center acao-coluna">
+                                <form th:if="${demanda.status.name() != 'CONCLUIDO' && demanda.status.name() != 'CONCLUIDA'}" th:action="@{/secretaria/atualizar-status}" method="post" class="acao-form">
+                                    <input type="hidden" name="id" th:value="${demanda.id}" />
+                                    <select name="status" class="status-select" aria-label="Alterar status da demanda">
+                                        <option value="PENDENTE" th:selected="${demanda.status.name() == 'PENDENTE'}">Pendente</option>
+                                        <option value="EM_ATENDIMENTO" th:selected="${demanda.status.name() == 'EM_ATENDIMENTO'}">Em atendimento</option>
+                                        <option value="CONCLUIDO" th:selected="${demanda.status.name() == 'CONCLUIDO' || demanda.status.name() == 'CONCLUIDA'}">Concluído</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primario btn-sm acao-botao">Salvar</button>
                                 </form>
-                                <small th:if="${demanda.status.name() == 'CONCLUIDA' or demanda.status.name() == 'CONCLUIDO'}">Finalizado</small>
+                                <small th:if="${demanda.status.name() == 'CONCLUIDO' || demanda.status.name() == 'CONCLUIDA'}" class="status-finalizado">Finalizado</small>
                             </td>
                         </tr>
                         <tr th:if="${#lists.isEmpty(demandas)}"><td colspan="7" class="tabela-vazia">Nenhuma demanda registrada ainda.</td></tr>

@@ -221,17 +221,19 @@ a {
 
 /* card */
 .card {
+  width: min(100%, 1180px);
+  margin: 0 auto 2rem;
   background: linear-gradient(160deg, #175a49, #0e3a2f);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--raio);
   box-shadow: var(--sombra);
   padding: 2.2rem;
-  margin-bottom: 2rem;
 }
 .card-titulo {
   margin: 0 0 1.5rem;
   text-align: center;
   color: var(--cor-areia);
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
 }
 .titulo-pagina {
   margin: 0 0 1.5rem;
@@ -305,8 +307,8 @@ a {
 /* formulários */
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 1.2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.2rem;
 }
 .form-grupo {
   margin-bottom: 1.1rem;
@@ -322,6 +324,7 @@ a {
 .form-grupo textarea,
 .form-busca input {
   width: 100%;
+  min-height: 52px;
   font: inherit;
   color: #fff;
   background: rgba(255, 255, 255, 0.08);
@@ -354,12 +357,18 @@ a {
   color: #a9c4b5;
 }
 .form-busca {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.7rem;
+  max-width: 980px;
+  margin: 0 auto;
 }
 .form-busca input {
   border-radius: 999px;
   padding: 0.8rem 1.3rem;
+}
+.form-busca button {
+  min-width: 180px;
 }
 
 /* alertas, badges */
@@ -411,10 +420,28 @@ a {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+.acao-coluna {
+  min-width: 230px;
+}
+.acao-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+}
+.acao-botao {
+  white-space: nowrap;
+}
+.status-finalizado {
+  display: inline-block;
+  color: #9fe4b3;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
 .status-select {
   min-width: 160px;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 0.45rem 0.7rem;
+  padding: 0.6rem 0.8rem;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   background: linear-gradient(180deg, #f4d88a, #d7a84d);
