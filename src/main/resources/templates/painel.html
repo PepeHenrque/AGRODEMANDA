@@ -31,12 +31,12 @@
                             <td th:text="${demanda.telefone}"></td>
                             <td><span class="badge badge-comunidade" th:text="${demanda.comunidade}"></span></td>
                             <td th:text="${demanda.tipoNecessidade}"></td>
-                            <td><span class="badge" th:classappend="${demanda.status.name() == 'PENDENTE'} ? 'badge-pendente' : 'badge-concluida'" th:text="${demanda.status}"></span></td>
+                            <td><span class="badge" th:classappend="${demanda.status.name() == 'PENDENTE'} ? 'badge-pendente' : 'badge-concluida'" th:text="${demanda.status.descricao != null ? demanda.status.descricao : demanda.status}"></span></td>
                             <td class="text-center">
                                 <form th:if="${demanda.status.name() == 'PENDENTE'}" th:action="@{/demandas/{id}/concluir(id=${demanda.id})}" method="post">
                                     <button type="submit" class="btn btn-primario btn-sm">Concluir</button>
                                 </form>
-                                <small th:if="${demanda.status.name() == 'CONCLUIDA'}">Finalizado</small>
+                                <small th:if="${demanda.status.name() == 'CONCLUIDA' or demanda.status.name() == 'CONCLUIDO'}">Finalizado</small>
                             </td>
                         </tr>
                         <tr th:if="${#lists.isEmpty(demandas)}"><td colspan="7" class="tabela-vazia">Nenhuma demanda registrada ainda.</td></tr>

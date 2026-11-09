@@ -24,14 +24,13 @@ public class DemandaService {
             demanda.setStatus(StatusDemanda.PENDENTE);
         }
 
-        Demanda salva = repository.save(demanda);
-
-        if (salva.getProtocolo() == null || salva.getProtocolo().isBlank()) {
-            int numeroProtocolo = 100 + (int)(Math.abs(System.currentTimeMillis()) % 900);
-            salva.setProtocolo("AGRO-" + numeroProtocolo);
+        // Garante que o protocolo seja gerado ANTES de salvar (coluna não pode ser nula)
+        if (demanda.getProtocolo() == null || demanda.getProtocolo().isBlank()) {
+            int numeroProtocolo = 1000 + (int)(Math.abs(System.currentTimeMillis()) % 9000);
+            demanda.setProtocolo("AGRO-" + numeroProtocolo);
         }
 
-        return repository.save(salva);
+        return repository.save(demanda);
     }
 
     public List<Demanda> listarTodas() {
@@ -42,7 +41,22 @@ public class DemandaService {
         if (protocolo == null || protocolo.isBlank()) {
             return null;
         }
-        return repository.findByProtocolo(protocolo.trim()).orElse(null);
+        String limpo = protocolo.trim();
+        Demanda resultado = repository.findByProtocolo(limpo).orElse(null);
+        if (resultado != null) {
+            return resultado;
+        }
+
+        // Caso o usuário consulte sem o traço (ex.: AGRO1234)
+        if (!limpo.contains("-") && limpo.length() > 4 && limpo.toUpperCase().startsWith("AGRO")) {
+            String comTraco = "AGRO-" + limpo.substring(4);
+            resultado = repository.findByProtocolo(comTraco).orElse(null);
+            if (resultado != null) {
+                return resultado;
+            }
+        }
+
+        return null;
     }
 
     public void atualizarStatus(Long id, StatusDemanda novoStatus) {
@@ -62,6 +76,6 @@ public class DemandaService {
     }
 
     public long contarConcluidas() {
-        return repository.countByStatus(StatusDemanda.CONCLUIDO);
+        return repository.countByStatus(StatusDemanda.CONCLUIDO) + repository.countByStatus(StatusDemanda.CONCLUIDA);
     }
 }

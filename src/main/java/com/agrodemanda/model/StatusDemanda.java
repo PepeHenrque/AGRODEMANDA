@@ -3,7 +3,8 @@ package com.agrodemanda.model;
 public enum StatusDemanda {
     PENDENTE("Pendente"),
     EM_ATENDIMENTO("Em Atendimento"),
-    CONCLUIDO("Concluído");
+    CONCLUIDO("Concluído"),
+    CONCLUIDA("Concluído");
 
     private final String descricao;
 
