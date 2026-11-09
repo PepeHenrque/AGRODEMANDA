@@ -116,128 +116,58 @@
           </div>
         </div>
 
-        <div
-          th:if="${mensagemSucesso}"
-          class="alerta alerta-sucesso"
-          th:text="${mensagemSucesso}"
-        ></div>
-        <div
-          th:if="${mensagemErro}"
-          class="alerta alerta-aviso"
-          th:text="${mensagemErro}"
-        ></div>
+            <div th:if="${mensagemSucesso}" class="alerta alerta-sucesso" th:text="${mensagemSucesso}"></div>
+            <div th:if="${mensagemErro}" class="alerta alerta-aviso" th:text="${mensagemErro}"></div>
 
-        <div class="card">
-          <h2 class="card-titulo">Consultar Protocolo</h2>
-          <form
-            th:action="@{/demanda/consultar}"
-            method="get"
-            class="form-busca"
-          >
-            <input
-              type="text"
-              id="inputProtocolo"
-              name="protocolo"
-              placeholder="Digite seu protocolo"
-              required
-              minlength="8"
-              maxlength="8"
-              autocomplete="off"
-            />
-            <button type="submit" class="btn btn-primario">Consultar</button>
-          </form>
-
-          <div th:if="${resultadoConsulta != null}">
-            <div class="resultado-consulta">
-              <div>
-                Status:
-                <span
-                  class="badge"
-                  th:classappend="${resultadoConsulta.status.name() == 'PENDENTE'} ? 'badge-pendente' : 'badge-concluida'"
-                  th:text="${resultadoConsulta.status.descricao}"
-                ></span>
-              </div>
-              <div>
-                Necessidade:
-                <strong th:text="${resultadoConsulta.tipoServico}"></strong>
-              </div>
-              <div>
-                Comunidade:
-                <span th:text="${resultadoConsulta.comunidade}"></span>
-              </div>
+            <div class="card">
+                <h2 class="card-titulo">Consultar Protocolo</h2>
+                <form th:action="@{/}" method="get" class="form-busca">
+                    <input type="text" id="inputProtocolo" name="protocoloConsulta" placeholder="Digite seu protocolo (Ex: AGRO-1001)" required minlength="4" maxlength="25" autocomplete="off">
+                    <button type="submit" class="btn btn-primario">Consultar</button>
+                </form>
+                <div th:if="${resultadoConsulta != null}">
+                    <div th:if="${#lists.isEmpty(resultadoConsulta)}" class="alerta alerta-aviso">Protocolo não encontrado.</div>
+                    <div th:unless="${#lists.isEmpty(resultadoConsulta)}">
+                        <div th:each="d : ${resultadoConsulta}" class="resultado-consulta">
+                            <div>Status:
+                                <span class="badge" th:classappend="${d.status.name() == 'PENDENTE'} ? 'badge-pendente' : 'badge-concluida'" th:text="${d.status.descricao != null ? d.status.descricao : d.status}"></span>
+                            </div>
+                            <div>Necessidade: <strong th:text="${d.tipoNecessidade}"></strong></div>
+                            <div>Comunidade: <span th:text="${d.comunidade}"></span></div>
+                            <div th:if="${d.descricao != null and !d.descricao.isBlank()}">Descrição: <span th:text="${d.descricao}"></span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 class="card-titulo">Nova Demanda</h2>
-          <form id="formDemanda" th:action="@{/demandas}" method="post">
-            <div class="form-grid">
-              <div class="form-grupo">
-                <label for="inputNome">Nome completo</label>
-                <input
-                  type="text"
-                  id="inputNome"
-                  name="nomeSolicitante"
-                  required
-                  minlength="3"
-                  maxlength="80"
-                  autocomplete="name"
-                  pattern="[A-Za-zÀ-ÿ' \-]{3,80}"
-                  title="Use apenas letras (mínimo 3)"
-                  placeholder="Seu nome"
-                />
-              </div>
-              <div class="form-grupo">
-                <label for="inputTelefone">Telefone / WhatsApp</label>
-                <input
-                  type="text"
-                  id="inputTelefone"
-                  name="telefone"
-                  required
-                  inputmode="numeric"
-                  maxlength="15"
-                  autocomplete="tel"
-                  pattern="\(\d{2}\) \d{4,5}-\d{4}"
-                  title="Formato: (00) 00000-0000"
-                  placeholder="(00) 00000-0000"
-                />
-              </div>
-              <div class="form-grupo">
-                <label for="selectComunidade">Comunidade</label>
-                <select id="selectComunidade" name="comunidade" required>
-                  <option value="">Selecione...</option>
-                  <option value="Magana">Magana</option>
-                  <option value="Barra da Cruz">Barra da Cruz</option>
-                  <option value="Centro">Centro</option>
-                  <option value="Zona Rural">Zona Rural</option>
-                </select>
-              </div>
-              <div class="form-grupo">
-                <label for="inputNecessidade">Tipo de necessidade</label>
-                <input
-                  type="text"
-                  id="inputNecessidade"
-                  name="tipoServico"
-                  required
-                  minlength="3"
-                  maxlength="60"
-                  placeholder="Ex.: Adubo, assistência técnica"
-                />
-              </div>
-            </div>
-            <div class="form-grupo">
-              <label for="textareaDescricao">Descrição</label>
-              <textarea
-                id="textareaDescricao"
-                name="descricao"
-                rows="4"
-                required
-                minlength="10"
-                maxlength="500"
-                placeholder="Descreva sua necessidade (mínimo 10 caracteres)"
-              ></textarea>
-              <small id="contadorDescricao" class="contador">0/500</small>
+            <div class="card">
+                <h2 class="card-titulo">Nova Demanda</h2>
+                <form id="formDemanda" th:action="@{/demandas}" method="post">
+                    <div class="form-grid">
+                        <div class="form-grupo"><label for="inputNome">Nome completo</label>
+                            <input type="text" id="inputNome" name="nome" required minlength="3" maxlength="80" autocomplete="name" placeholder="Seu nome"></div>
+                        <div class="form-grupo"><label for="inputTelefone">Telefone / WhatsApp</label>
+                            <input type="text" id="inputTelefone" name="telefone" required inputmode="numeric" maxlength="15" autocomplete="tel" placeholder="(00) 00000-0000"></div>
+                        <div class="form-grupo"><label for="selectComunidade">Comunidade</label>
+                            <select id="selectComunidade" name="comunidade" required>
+                                <option value="">Selecione...</option>
+                                <option value="Magana">Magana</option>
+                                <option value="Barra da Cruz">Barra da Cruz</option>
+                                <option value="Cacimba de Baixo">Cacimba de Baixo</option>
+                                <option value="Lagoa do Barbosa">Lagoa do Barbosa</option>
+                                <option value="Carrapicho">Carrapicho</option>
+                                <option value="Zona Rural">Outra Comunidade Rural</option>
+                            </select></div>
+                        <div class="form-grupo"><label for="inputNecessidade">Tipo de necessidade</label>
+                            <input type="text" id="inputNecessidade" name="tipoNecessidade" required minlength="3" maxlength="60" placeholder="Ex.: Preparo de solo, sementes, estradas"></div>
+                    </div>
+                    <div class="form-grupo"><label for="textareaDescricao">Descrição</label>
+                        <textarea id="textareaDescricao" name="descricao" rows="4" required minlength="10" maxlength="500" placeholder="Descreva sua necessidade (mínimo 10 caracteres)"></textarea>
+                        <small id="contadorDescricao" class="contador">0/500</small></div>
+                    <button type="submit" class="btn btn-primario btn-block">Enviar demanda</button>
+                </form>
             </div>
             <button type="submit" class="btn btn-primario btn-block">
               Enviar demanda

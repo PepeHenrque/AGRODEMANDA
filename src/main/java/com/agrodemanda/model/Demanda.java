@@ -57,6 +57,7 @@ public class Demanda {
         this.dataCriacao = LocalDateTime.now();
     }
 
+    // Getters e Setters principais
     public Long getId() {
         return id;
     }
@@ -127,5 +128,22 @@ public class Demanda {
 
     public void setDataCriacao(LocalDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    // Métodos de compatibilidade (para garantir integração com os templates HTML que usam "nome" e "tipoNecessidade")
+    public String getNome() {
+        return nomeSolicitante;
+    }
+
+    public void setNome(String nome) {
+        this.nomeSolicitante = nome;
+    }
+
+    public String getTipoNecessidade() {
+        return tipoServico;
+    }
+
+    public void setTipoNecessidade(String tipoNecessidade) {
+        this.tipoServico = tipoNecessidade;
     }
 }
