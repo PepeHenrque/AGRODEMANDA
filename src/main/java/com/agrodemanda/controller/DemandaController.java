@@ -71,47 +71,13 @@ public class DemandaController {
     @PostMapping("/demandas/{id}/concluir")
     public String concluirDemanda(@PathVariable("id") Long id) {
         service.atualizarStatus(id, StatusDemanda.CONCLUIDO);
-        return "redirect:/painel";
+        return "redirect:/secretaria";
     }
 
     @PostMapping("/secretaria/atualizar-status")
     public String atualizarStatus(@RequestParam("id") Long id, @RequestParam("status") String novoStatus) {
         service.atualizarStatus(id, converterStatus(novoStatus));
-        return "redirect:/painel";
-    }
-
-    private StatusDemanda converterStatus(String status) {
-        if (status == null || status.isBlank()) {
-            throw new IllegalArgumentException("Status inválido: " + status);
-        }
-
-        String valor = status.trim();
-        try {
-            return StatusDemanda.valueOf(valor);
-        } catch (IllegalArgumentException ignored) {
-            String normalizado = valor
-                    .toUpperCase()
-                    .replace("Ç", "C")
-                    .replace("Ã", "A")
-                    .replace("Á", "A")
-                    .replace("É", "E")
-                    .replace("Í", "I")
-                    .replace("Ó", "O")
-                    .replace("Ô", "O")
-                    .replace("Ú", "U");
-
-            switch (normalizado) {
-                case "PENDENTE":
-                    return StatusDemanda.PENDENTE;
-                case "EM ATENDIMENTO":
-                    return StatusDemanda.EM_ATENDIMENTO;
-                case "CONCLUIDO":
-                case "CONCLUIDA":
-                    return StatusDemanda.CONCLUIDO;
-                default:
-                    throw new IllegalArgumentException("Status inválido: " + status);
-            }
-        }
+        return "redirect:/secretaria";
     }
 
     private StatusDemanda converterStatus(String status) {
@@ -152,6 +118,7 @@ public class DemandaController {
                     case "em atendimento":
                         return StatusDemanda.EM_ATENDIMENTO;
                     case "concluido":
+                    case "concluida":
                         return StatusDemanda.CONCLUIDO;
                     default:
                         throw new IllegalArgumentException("Status inválido: " + status);
