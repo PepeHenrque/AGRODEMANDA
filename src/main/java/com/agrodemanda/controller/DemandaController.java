@@ -113,4 +113,50 @@ public class DemandaController {
             }
         }
     }
+
+    private StatusDemanda converterStatus(String status) {
+        if (status == null || status.isBlank()) {
+            throw new IllegalArgumentException("Status inválido: " + status);
+        }
+
+        String valor = status.trim();
+
+        try {
+            return StatusDemanda.valueOf(valor);
+        } catch (IllegalArgumentException ignored) {
+            String normalizado = valor
+                    .toUpperCase()
+                    .replace("-", "_")
+                    .replace(" ", "_")
+                    .replace("Á", "A")
+                    .replace("À", "A")
+                    .replace("Ã", "A")
+                    .replace("Â", "A")
+                    .replace("É", "E")
+                    .replace("Í", "I")
+                    .replace("Ó", "O")
+                    .replace("Õ", "O")
+                    .replace("Ú", "U")
+                    .replace("Ç", "C");
+
+            try {
+                return StatusDemanda.valueOf(normalizado);
+            } catch (IllegalArgumentException e) {
+                String semAcento = normalizado
+                        .replace("_", " ")
+                        .toLowerCase();
+
+                switch (semAcento) {
+                    case "pendente":
+                        return StatusDemanda.PENDENTE;
+                    case "em atendimento":
+                        return StatusDemanda.EM_ATENDIMENTO;
+                    case "concluido":
+                        return StatusDemanda.CONCLUIDO;
+                    default:
+                        throw new IllegalArgumentException("Status inválido: " + status);
+                }
+            }
+        }
+    }
 }

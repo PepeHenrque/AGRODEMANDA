@@ -1,23 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Painel da Secretaria</title>
-    <link rel="stylesheet" th:href="@{/css/style.css(v=2)}">
-</head>
-<body>
+    <link rel="stylesheet" th:href="@{/css/style.css(v=2)}" />
+  </head>
+  <body>
     <div th:replace="~{fragments :: navbar('fixa', 'painel')}"></div>
 
-    <section class="faixa-escura" style="min-height:90vh">
-        <div class="container">
-            <h1 class="titulo-pagina">Painel da Secretaria</h1>
+    <section class="faixa-escura" style="min-height: 90vh">
+      <div class="container">
+        <h1 class="titulo-pagina">Painel da Secretaria</h1>
 
-            <div class="grid-tiles">
-                <div class="tile tile-marrom"><div class="tile-numero" th:text="${total}">0</div><h3>Total de demandas</h3></div>
-                <div class="tile tile-bege"><div class="tile-numero" th:text="${pendentes}">0</div><h3>Pendentes</h3></div>
-                <div class="tile tile-verde"><div class="tile-numero" th:text="${concluidas}">0</div><h3>Concluídas</h3></div>
-            </div>
+        <div class="grid-tiles">
+          <div class="tile tile-marrom">
+            <div class="tile-numero" th:text="${total}">0</div>
+            <h3>Total de demandas</h3>
+          </div>
+          <div class="tile tile-bege">
+            <div class="tile-numero" th:text="${pendentes}">0</div>
+            <h3>Pendentes</h3>
+          </div>
+          <div class="tile tile-verde">
+            <div class="tile-numero" th:text="${concluidas}">0</div>
+            <h3>Concluídas</h3>
+          </div>
+        </div>
 
             <div class="card tabela-wrapper">
                 <table class="tabela">
@@ -44,8 +53,9 @@
                 </table>
             </div>
         </div>
+      </div>
     </section>
 
     <footer class="footer">AgroDemanda · Secretaria de Agricultura</footer>
-</body>
+  </body>
 </html>
