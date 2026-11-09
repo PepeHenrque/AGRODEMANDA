@@ -69,9 +69,9 @@ O projeto foi dividido em 4 blocos para garantir uma atuacao bem definida e cola
    ```
 
 4. Acessar a Aplicacao:
-   - Portal do Agricultor: http://localhost:8080
-   - Painel da Secretaria: http://localhost:8080/painel
-   - Console do Banco H2: http://localhost:8080/h2-console
+   - Portal do Agricultor: http://localhost:8081
+   - Painel da Secretaria: http://localhost:8081/painel
+   - Console do Banco H2: http://localhost:8081/h2-console
      - JDBC URL: `jdbc:h2:mem:agrodemandadb`
      - User Name: `sa`
      - Password: *(deixar em branco)*
