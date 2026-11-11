@@ -6,16 +6,16 @@ Plataforma digital desenvolvida para conectar agricultores familiares e associa�
 
 ---
 
-## Equipe e Divisao de Responsabilidades
+## Equipe e Divisão de Responsabilidades
 
 O projeto foi dividido em 4 blocos para garantir uma atuacao bem definida e colaborativa via Git:
 
 | Integrante | Bloco | Branch | Responsabilidade Principal |
 | :--- | :--- | :--- | :--- |
-| **Lívia Silva** | Bloco 1 (Front-end) | `bloco-1-frontend` | Construcao das telas responsivas (Portal do Agricultor e Painel da Secretaria) com Thymeleaf, HTML5 semantico, CSS customizado e JavaScript de mascaras/validacao. |
-| **Pedro Henrique** | Bloco 2 (Back-end) | `bloco-2-backend` | Modelagem da entidade `Demanda`, enum `StatusDemanda`, interface `DemandaRepository` (Spring Data JPA), configuracao do banco H2 em memoria e carga inicial de dados (`data.sql`). |
-| **Letícia Albuquerque** | Bloco 3 (Lógica/Integração) | `bloco-3-logica` | Implementacao do `DemandaService` e `DemandaController`, regras de geracao de protocolo (`AGRO-XXXX`), transicao de status e cruzamento entre front-end e banco. |
-| **Miquéias Almeida** | Bloco 4 (Entregáveis) | `bloco-4-docs` | Elaboracao do documento tecnico da aplicacao, relatorio de impacto e mitigacao do desafio publico, alem dos slides da apresentacao final. |
+| **Líbia Silveira** | Bloco 1 (Front-end) | `bloco-1-frontend` | Construção das telas responsivas (Portal do Agricultor e Painel da Secretaria) com Thymeleaf, HTML5 semantico, CSS customizado e JavaScript de mascaras/validacao. |
+| **Pedro Henrique** | Bloco 2 (Back-end) | `bloco-2-backend` | Modelagem da entidade `Demanda`, enum `StatusDemanda`, interface `DemandaRepository` (Spring Data JPA), configuraçãoo do banco H2 em memória e carga inicial de dados (`data.sql`). |
+| **Letícia Albuquerque** | Bloco 3 (Lógica/Integração) | `bloco-3-logica` | Implementação do `DemandaService` e `DemandaController`, regras de geração de protocolo (`AGRO-XXXX`), transição de status e cruzamento entre front-end e banco. |
+| **Miquéias Almeida** | Bloco 4 (Entregáveis) | `bloco-4-docs` | Elaboração do documento tcnico da aplicação, relatório de impacto e mitigação do desafio público, além dos slides da apresentação final. |
 
 ---
 
@@ -24,35 +24,35 @@ O projeto foi dividido em 4 blocos para garantir uma atuacao bem definida e cola
 - Linguagem: Java 17 / 21
 - Framework: Spring Boot 3.2.5
 - Mapeamento Objeto-Relacional: Spring Data JPA / Hibernate
-- Banco de Dados: H2 Database (em memoria, sem necessidade de instalacao local)
+- Banco de Dados: H2 Database (em memória, sem necessidade de instalação local)
 - Front-end: Thymeleaf, HTML5, CSS3 e JavaScript puro
-- Gerenciador de Dependencias: Maven
+- Gerenciador de Dependências: Maven
 
 ---
 
-## Funcionalidades da Aplicacao
+## Funcionalidades da Aplicação
 
 ### 1. Portal do Agricultor (Mobile-First)
-- Registro de Demanda: O produtor informa seu nome, telefone/WhatsApp, seleciona sua comunidade rural (Magana, Barra da Cruz, Cacimba de Baixo, Lagoa do Barbosa, etc.), tipo de servico (Preparo de solo, estradas, agua, etc.) e descricao da necessidade.
-- Geracao Automatica de Protocolo: Ao enviar a solicitacao, o sistema gera instantaneamente um codigo rastreavel (ex.: AGRO-1042).
-- Consulta Rapida de Protocolo: O agricultor pode digitar seu numero de protocolo a qualquer momento na pagina inicial para acompanhar se sua solicitacao esta Pendente ou Concluida.
+- Registro de Demanda: O produtor informa seu nome, telefone/WhatsApp, seleciona sua comunidade rural (Magana, Barra da Cruz, Cacimba de Baixo, Lagoa do Barbosa, etc.), tipo de serviço (Preparo de solo, estradas, água, etc.) e descrição da necessidade.
+- Geracao Automática de Protocolo: Ao enviar a solicitação, o sistema gera instantaneamente um código rastreável (ex.: AGRO-1042).
+- Consulta Rápida de Protocolo: O agricultor pode digitar seu número de protocolo a qualquer momento na página inicial para acompanhar se sua solicitação está Pendente ou Concluída.
 
-### 2. Painel de Gestao da Secretaria de Agricultura
-- Indicadores em Tempo Real: Cartoes informativos no topo com o total de demandas, quantidade pendente e quantidade concluida.
-- Tabela Centralizadora de Atendimentos: Listagem completa de todos os chamados com identificacao do solicitante, contato telefonico, comunidade e necessidade.
-- Acao Rapida de Conclusao: Botao direto para marcar uma demanda pendente como finalizada.
+### 2. Painel de Gestão da Secretaria de Agricultura
+- Indicadores em Tempo Real: Cartões informativos no topo com o total de demandas, quantidade pendente e quantidade concluída.
+- Tabela Centralizadora de Atendimentos: Listagem completa de todos os chamados com identificação do solicitante, contato telefônico, comunidade e necessidade.
+- Ação Rápida de Conclusão: Botão direto para marcar uma demanda pendente como finalizada.
 
 ---
 
 ## Como Executar o Projeto
 
-### Pre-requisitos
-- Java JDK 17 ou superior instalado na maquina.
-- Uma IDE de sua preferencia (IntelliJ IDEA, VS Code com extensoes Java, ou Eclipse) ou Maven instalado.
+### Pré-requisitos
+- Java JDK 17 ou superior instalado na máquina.
+- Uma IDE de sua preferência (IntelliJ IDEA, VS Code com extensões Java, ou Eclipse) ou Maven instalado.
 
 ### Passo a Passo
 
-1. Clonar o repositorio:
+1. Clonar o repositório:
    ```bash
    git clone https://github.com/PepeHenrque/AGRODEMANDA.git
    cd AGRODEMANDA
@@ -60,7 +60,7 @@ O projeto foi dividido em 4 blocos para garantir uma atuacao bem definida e cola
 
 2. Executar pela IDE:
    - Abra a pasta do projeto na sua IDE.
-   - Aguarde o Maven baixar as dependencias automaticamente.
+   - Aguarde o Maven baixar as dependências automaticamente.
    - Execute a classe principal: `src/main/java/com/agrodemanda/AgrodemandaApplication.java`.
 
 3. Executar via Linha de Comando (caso possua Maven instalado):
@@ -74,7 +74,7 @@ O projeto foi dividido em 4 blocos para garantir uma atuacao bem definida e cola
    - Console do Banco H2: http://localhost:8081/h2-console
      - JDBC URL: `jdbc:h2:mem:agrodemandadb`
      - User Name: `sa`
-     - Password: *(deixar em branco)*
+     - Password: **
 
 ---
 
