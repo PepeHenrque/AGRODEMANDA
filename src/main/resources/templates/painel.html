@@ -30,32 +30,49 @@
 
             <div class="card tabela-wrapper">
                 <table class="tabela">
-                    <thead>
-                        <tr><th>Protocolo</th><th>Nome</th><th>Telefone</th><th>Comunidade</th><th>Necessidade</th><th>Status</th><th class="text-center">Ações</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="demanda : ${demandas}">
-                            <td class="protocolo" th:text="${demanda.protocolo}"></td>
-                            <td th:text="${demanda.nome}"></td>
-                            <td th:text="${demanda.telefone}"></td>
-                            <td><span class="badge badge-comunidade" th:text="${demanda.comunidade}"></span></td>
-                            <td th:text="${demanda.tipoNecessidade}"></td>
-                            <td><span class="badge" th:classappend="${demanda.status.name() == 'PENDENTE'} ? 'badge-pendente' : 'badge-concluida'" th:text="${demanda.status.descricao != null ? demanda.status.descricao : demanda.status}"></span></td>
-                            <td class="text-center acao-coluna">
-                                <form th:if="${demanda.status.name() != 'CONCLUIDO' && demanda.status.name() != 'CONCLUIDA'}" th:action="@{/secretaria/atualizar-status}" method="post" class="acao-form">
-                                    <input type="hidden" name="id" th:value="${demanda.id}" />
-                                    <select name="status" class="status-select" aria-label="Alterar status da demanda">
-                                        <option value="PENDENTE" th:selected="${demanda.status.name() == 'PENDENTE'}">Pendente</option>
-                                        <option value="EM_ATENDIMENTO" th:selected="${demanda.status.name() == 'EM_ATENDIMENTO'}">Em atendimento</option>
-                                        <option value="CONCLUIDO" th:selected="${demanda.status.name() == 'CONCLUIDO' || demanda.status.name() == 'CONCLUIDA'}">Concluído</option>
-                                    </select>
-                                    <button type="submit" class="btn btn-primario btn-sm acao-botao">Salvar</button>
-                                </form>
-                                <small th:if="${demanda.status.name() == 'CONCLUIDO' || demanda.status.name() == 'CONCLUIDA'}" class="status-finalizado">Finalizado</small>
-                            </td>
-                        </tr>
-                        <tr th:if="${#lists.isEmpty(demandas)}"><td colspan="7" class="tabela-vazia">Nenhuma demanda registrada ainda.</td></tr>
-                    </tbody>
+                  <thead>
+                    <tr>
+                      <th>Protocolo</th>
+                      <th>Nome</th>
+                      <th>Telefone</th>
+                      <th>Comunidade</th>
+                      <th>Necessidade</th>
+                      <th>Status</th>
+                      <th class="text-center">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="demanda : ${demandas}">
+                      <td class="protocolo" th:text="${demanda.protocolo}"></td>
+                      <td th:text="${demanda.nome}"></td>
+                      <td th:text="${demanda.telefone}"></td>
+                      <td><span class="badge badge-comunidade" th:text="${demanda.comunidade}"></span></td>
+                      <td th:text="${demanda.tipoNecessidade}"></td>
+                      <td><span class="badge"
+                          th:classappend="${demanda.status.name() == 'PENDENTE'} ? 'badge-pendente' : 'badge-concluida'"
+                          th:text="${demanda.status.descricao != null ? demanda.status.descricao : demanda.status}"></span></td>
+                      <td class="text-center acao-coluna">
+                        <form th:if="${demanda.status.name() != 'CONCLUIDO' && demanda.status.name() != 'CONCLUIDA'}"
+                          th:action="@{/secretaria/atualizar-status}" method="post" class="acao-form">
+                          <input type="hidden" name="id" th:value="${demanda.id}" />
+                          <select name="status" class="status-select" aria-label="Alterar status da demanda">
+                            <option value="PENDENTE" th:selected="${demanda.status.name() == 'PENDENTE'}">Pendente</option>
+                            <option value="EM_ATENDIMENTO" th:selected="${demanda.status.name() == 'EM_ATENDIMENTO'}">Em atendimento
+                            </option>
+                            <option value="CONCLUIDO"
+                              th:selected="${demanda.status.name() == 'CONCLUIDO' || demanda.status.name() == 'CONCLUIDA'}">Concluído
+                            </option>
+                          </select>
+                          <button type="submit" class="btn btn-primario btn-sm acao-botao">Salvar</button>
+                        </form>
+                        <small th:if="${demanda.status.name() == 'CONCLUIDO' || demanda.status.name() == 'CONCLUIDA'}"
+                          class="status-finalizado">Finalizado</small>
+                      </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(demandas)}">
+                      <td colspan="7" class="tabela-vazia">Nenhuma demanda registrada ainda.</td>
+                    </tr>
+                  </tbody>
                 </table>
             </div>
         </div>
