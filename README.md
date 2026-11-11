@@ -6,9 +6,9 @@ Projeto desenvolvido para atender conjuntamente ao **Desafio de Inovação Digit
 
 ## Equipe
 - Pedro Henrique (Bloco 2 - Back-end e Persistência)
-- Micael
+- Miquéias
 - Letícia
-- Lívia
+- Líbia
 
 ## Divisão dos Blocos
 - **Bloco 1 (branch `bloco-1-frontend`)**: Telas em Bootstrap e Thymeleaf (Portal Mobile do Agricultor e Painel da Secretaria).
